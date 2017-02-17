@@ -31,18 +31,7 @@
 
 <body>
 
-<div class="navbar navbar-default navbar-static-top" role="navigation">
-    <div class="container">
- 
-        <div class="navbar-header">
-            <a class="navbar-brand" href="http://www.codingcage.com" title='Programming Blog'>Coding Cage</a>
-            <a class="navbar-brand" href="http://www.codingcage.com/search/label/CRUD">CRUD</a>
-            <a class="navbar-brand" href="http://www.codingcage.com/search/label/PDO">PDO</a>
-            <a class="navbar-brand" href="http://www.codingcage.com/search/label/jQuery">jQuery</a>
-        </div>
- 
-    </div>
-</div>
+
 
 <div class="container">
 
@@ -67,14 +56,23 @@
 			<div class="col-xs-3">
 				<p class="page-header"><?php echo $userName."&nbsp;/&nbsp;".$userProfession; ?></p>
 				<img src="user_images/<?php echo $row['userPic']; ?>" class="img-rounded" width="250px" height="250px" />
+                     <a href="user_images/<?php echo $row['userPic'];?>"><?php echo $row['userPic'];?></a>    
 				<p class="page-header">
+
 				<span>
 				<a class="btn btn-info" href="editform.php?edit_id=<?php echo $row['userID']; ?>" title="click for edit" onclick="return confirm('sure to edit ?')"><span class="glyphicon glyphicon-edit"></span> Edit</a> 
-				<a class="btn btn-danger" href="?delete_id=<?php echo $row['userID']; ?>" title="click for delete" onclick="return confirm('sure to delete ?')"><span class="glyphicon glyphicon-remove-circle"></span> Delete</a>
+				<a class="btn btn-danger" href="?delete_id=<?php echo $row['userID']; ?>" title="click for delete" onclick="return confirm('sure to delete ?')"><span class="glyphicon glyphicon-remove-circle"></span> Delete</a> 
+
 				</span>
 				</p>
 			</div>       
+            
+  
+            
 			<?php
+			
+			
+			
 		}
 	}
 	else
@@ -93,9 +91,6 @@
 
 
 
-<div class="alert alert-info">
-    <strong>tutorial link !</strong> <a href="http://www.codingcage.com/2016/02/upload-insert-update-delete-image-using.html">Coding Cage</a>!
-</div>
 
 </div>
 

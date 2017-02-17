@@ -5,7 +5,7 @@
 	require_once 'dbconfig.php';
 	
 	if(isset($_POST['btnsave']))
-	{
+	{ // cycle begins
 		$username = $_POST['user_name'];// user name
 		$userjob = $_POST['user_job'];// user email
 		
@@ -13,7 +13,7 @@
 		$tmp_dir = $_FILES['user_image']['tmp_name'];
 		$imgSize = $_FILES['user_image']['size'];
 		
-		
+	// check if	empty fields
 		if(empty($username)){
 			$errMSG = "Please Enter Username.";
 		}
@@ -23,7 +23,7 @@
 		else if(empty($imgFile)){
 			$errMSG = "Please Select Image File.";
 		}
-		else
+		else // if not empty
 		{
 			$upload_dir = 'user_images/'; // upload directory
 	
@@ -33,10 +33,17 @@
 			$valid_extensions = array('jpeg', 'jpg', 'png', 'gif'); // valid extensions
 		
 			// rename uploading image
-			$userpic = rand(1000,1000000).".".$imgExt;
+		//	$userpic = rand(1000,1000000).".".$imgExt;
+			$userpic = $imgFile;
 				
 			// allow valid image file formats
-			if(in_array($imgExt, $valid_extensions)){			
+			if(in_array($imgExt, $valid_extensions)){	
+			
+			// check if there is already file with the same name
+			if (file_exists ($upload_dir.$userpic)) {
+			$errMSG = "File with such name already exists";
+			}
+				
 				// Check file size '5MB'
 				if($imgSize < 5000000)				{
 					move_uploaded_file($tmp_dir,$upload_dir.$userpic);
@@ -48,6 +55,7 @@
 			else{
 				$errMSG = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";		
 			}
+				
 		}
 		
 		
@@ -111,18 +119,6 @@
 </head>
 <body>
 
-<div class="navbar navbar-default navbar-static-top" role="navigation">
-    <div class="container">
- 
-        <div class="navbar-header">
-            <a class="navbar-brand" href="http://www.codingcage.com" title='Programming Blog'>Coding Cage</a>
-            <a class="navbar-brand" href="http://www.codingcage.com/search/label/CRUD">CRUD</a>
-            <a class="navbar-brand" href="http://www.codingcage.com/search/label/PDO">PDO</a>
-            <a class="navbar-brand" href="http://www.codingcage.com/search/label/jQuery">jQuery</a>
-        </div>
- 
-    </div>
-</div>
 
 <div class="container">
 
@@ -166,9 +162,12 @@
     <tr>
     	<td><label class="control-label">Profile Img.</label></td>
         <td><input class="input-group" type="file" name="user_image" accept="image/*" onchange="readURL(this);" /> 
+ 
         <img id="blah" src="" alt="your image" class="img-responsive" /></td>
     </tr>
-    
+  
+
+ 
     <tr>
         <td colspan="2"><button type="submit" name="btnsave" class="btn btn-default">
         <span class="glyphicon glyphicon-save"></span> &nbsp; save
@@ -181,19 +180,7 @@
 </form>
 
 
-
-<div class="alert alert-info">
-    <strong>tutorial link !</strong> <a href="http://www.codingcage.com/2016/02/upload-insert-update-delete-image-using.html">Coding Cage</a>!
 </div>
-
-    
-
-</div>
-
-
-
-	
-
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="bootstrap/js/bootstrap.min.js"></script>
