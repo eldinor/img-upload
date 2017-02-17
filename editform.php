@@ -110,18 +110,6 @@
 </head>
 <body>
 
-<div class="navbar navbar-default navbar-static-top" role="navigation">
-    <div class="container">
- 
-        <div class="navbar-header">
-            <a class="navbar-brand" href="http://www.codingcage.com" title='Programming Blog'>Coding Cage</a>
-            <a class="navbar-brand" href="http://www.codingcage.com/search/label/CRUD">CRUD</a>
-            <a class="navbar-brand" href="http://www.codingcage.com/search/label/PDO">PDO</a>
-            <a class="navbar-brand" href="http://www.codingcage.com/search/label/jQuery">jQuery</a>
-        </div>
- 
-    </div>
-</div>
 
 
 <div class="container">
@@ -182,9 +170,6 @@
 </form>
 
 
-<div class="alert alert-info">
-    <strong>tutorial link !</strong> <a href="http://www.codingcage.com/2016/02/upload-insert-update-delete-image-using.html">Coding Cage</a>!
-</div>
 
 </div>
 </body>
