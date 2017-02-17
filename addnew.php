@@ -81,7 +81,33 @@
 
 <!-- Optional theme -->
 <link rel="stylesheet" href="bootstrap/css/bootstrap-theme.min.css">
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+  
+<script>    
 
+
+ function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width()
+                        .height(200);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+		</script>
+<style> img[src=""] {
+   display: none;
+}
+</style>
 </head>
 <body>
 
@@ -139,7 +165,8 @@
     
     <tr>
     	<td><label class="control-label">Profile Img.</label></td>
-        <td><input class="input-group" type="file" name="user_image" accept="image/*" /></td>
+        <td><input class="input-group" type="file" name="user_image" accept="image/*" onchange="readURL(this);" /> 
+        <img id="blah" src="" alt="your image" class="img-responsive" /></td>
     </tr>
     
     <tr>
